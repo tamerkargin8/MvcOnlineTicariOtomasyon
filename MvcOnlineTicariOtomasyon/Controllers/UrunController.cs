@@ -71,5 +71,10 @@ namespace MvcOnlineTicariOtomasyon.Controllers
             }).ToList();
             ViewBag.Kategoriler = kategoriler;
         }
+        public ActionResult UrunListesi()
+        {
+            var urunler = c.Uruns.Include(x => x.Kategori).ToList();
+            return View(urunler);
+        }
     }
 }

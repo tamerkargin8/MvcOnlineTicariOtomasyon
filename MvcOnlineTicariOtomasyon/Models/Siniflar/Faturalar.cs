@@ -17,18 +17,20 @@ namespace MvcOnlineTicariOtomasyon.Models.Siniflar
         [Column(TypeName = "Varchar")]
         [StringLength(10)]
         public string FaturaSiraNo { get; set; }
+        [Column(TypeName = "Date")]
         public DateTime FaturaTarih { get; set; }
-        public DateTime FaturaSaat { get; set; }
+        [Column(TypeName = "Time")]
+        public TimeSpan FaturaSaat { get; set; }
         [Column(TypeName = "Varchar")]
         [StringLength(50)]
         public string VergiDairesi { get; set; }
-        [Column(TypeName = "Varchar")]
-        [StringLength(30)]
-        public string TeslimEden { get; set; }
-        [Column(TypeName = "Varchar")]
-        [StringLength(30)]
-        public string TeslimAlan { get; set; }
-        public decimal Toplam { get; set; }
-        public ICollection<FaturaKalem> FaturaKalems { get; set; } // One-to-Many relationship -- bir faturanın birden fazla fatura kalemi olabilir.
+        [Column(TypeName = "Decimal")]
+        public decimal FaturaToplamTutar { get; set; }
+        public ICollection<FaturaKalem> FaturaKalems { get; set; }
+        public int CariId { get; set; }
+        public int PersonelId { get; set; }
+        public virtual Cariler Cari { get; set; }
+        public virtual Personel Personel { get; set; }
+
     }
 }

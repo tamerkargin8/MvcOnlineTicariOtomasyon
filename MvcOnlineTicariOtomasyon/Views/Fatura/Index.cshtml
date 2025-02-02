@@ -1,0 +1,85 @@
+﻿@using MvcOnlineTicariOtomasyon.Models.Siniflar;
+@model List<Faturalar>
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/AdminLayout.cshtml";
+}
+<br />
+<h2>Faturalar</h2>
+<br />
+<table class="table table-bordered">
+    <thead>
+        <tr>
+            <th>
+                Fatura ID
+            </th>
+            <th>
+                Fatura Seri No
+            </th>
+            <th>
+                Fatura Sıra No
+            </th>
+            <th>
+                Tarih
+            </th>
+            <th>
+                Saat
+            </th>
+            <th>
+                Vergi Dairesi
+            </th>
+            <th>
+                Cari
+            </th>
+            <th>
+                Personel
+            </th>
+            <th>
+                Toplam Tutar
+            </th>
+            <th>
+                Fatura Detay
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @item.FaturaId
+                </td>
+                <td>
+                    @item.FaturaSeriNo
+                </td>
+                <td>
+                    @item.FaturaSiraNo
+                </td>
+                <td>
+                    @item.FaturaTarih.ToString("d")
+                </td>
+                <td>
+                    @item.FaturaSaat
+                </td>
+                <td>
+                    @item.VergiDairesi
+                </td>
+                <td>
+                    @item.Cari.CariAd @item.Cari.CariSoyad
+                </td>
+                <td>
+                    @item.Personel.PersonelAd @item.Personel.PersonelSoyad
+                </td>
+                <td>
+                    @item.FaturaToplamTutar
+                </td>
+                <td>
+                    <a href="/Fatura/FaturaDetay/@item.FaturaId" class="btn btn-primary">Detay</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+<br />
+<a href="/Fatura/YeniFaturaEkle" class="btn btn-primary">Yeni Fatura Ekle</a>
+
