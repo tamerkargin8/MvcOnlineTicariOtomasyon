@@ -1,0 +1,56 @@
+﻿@using MvcOnlineTicariOtomasyon.Models.Siniflar;
+@model List<Departman>
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/AdminLayout.cshtml";
+}
+<br />
+<h2>Departman Listesi</h2>
+<br />
+<table class="table table-bordered" style="margin-top: 20px">
+    <thead>
+        <tr>
+            <th>
+                Departman Id
+            </th>
+            <th>
+                Departman Adı
+            </th>
+            <th>
+                Departman Durum
+            </th>
+            <th>
+                İşlemler
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @item.DepartmanId
+                </td>
+                <td>
+                    @item.DepartmanAd
+                </td>
+                <td>
+                    @if (item.DepartmanDurum == true)
+                    {
+                        <span style="color: green;">Aktif</span>
+                    }
+                    else
+                    {
+                        <span style="color: red;">Pasif</span>
+                    }
+                </td>
+                <td>
+                    <a href="/Departman/DepartmanGetir/@item.DepartmanId" class="btn btn-outline-success">Güncelle</a>
+                    <a href="/Departman/DepartmanSil/@item.DepartmanId" class="btn btn-outline-danger" onclick="return confirm('Silmek istediğinize emin misiniz?');">Sil</a>
+                    <a href="/Departman/DepartmanDetay/@item.DepartmanId" class="btn btn-outline-info">Departman Detay</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+<a href="/Departman/DepartmanEkle" class="btn btn-outline-primary">Departman Ekle</a>

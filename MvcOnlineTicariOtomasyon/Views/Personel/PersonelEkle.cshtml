@@ -1,0 +1,53 @@
+﻿@model MvcOnlineTicariOtomasyon.Models.Siniflar.Personel
+@{
+    ViewBag.Title = "PersonelEkle";
+    Layout = "~/Views/Shared/AdminLayout.cshtml";
+}
+<br />
+<h2>Personel Ekle</h2>
+<br />
+
+<form method="post" action="/Personel/PersonelEkle">
+    <div class=" form-group">
+        <label>Personel Ad</label>
+        <input type="text" class="form-control" name="PersonelAd" />
+    </div>
+    <div class=" form-group">
+        <label>Personel Soyad</label>
+        <input type="text" class="form-control" name="PersonelSoyad" />
+    </div>
+    <div class=" form-group">
+        <label>Personel Adres</label>
+        <input type="text" class="form-control" name="PersonelAdres" />
+    </div>
+    <div class=" form-group">
+        <label>Personel Mail</label>
+        <input type="text" class="form-control" name="PersonelMail" />
+    </div>
+    <div class=" form-group">
+        <label>Personel Telefon</label>
+        <input type="text" class="form-control" name="PersonelTelefon" />
+    </div>
+    <div class=" form-group">
+        <label>Personel Departman</label>
+        @if (ViewBag.departmanlar != null)
+        {
+            @Html.DropDownListFor(x => x.DepartmanId,
+                new SelectList(ViewBag.departmanlar, "Value", "Text"),
+                "Lütfen bir Departman seçin",
+                new { @class = "form-control" })
+        }
+        else
+        {
+            <p>Departman listesi yüklenemedi.</p>
+        }
+    </div>
+    <div class=" form-group">
+        <label>Personel Durum</label>
+        <select class="form-control" name="PersonelDurum">
+            <option value="true">Çalışıyor</option>
+            <option value="false">Çalışmıyor</option>
+        </select>
+    </div>
+    <button type="submit" class="btn btn-primary">Ekle</button>
+</form>

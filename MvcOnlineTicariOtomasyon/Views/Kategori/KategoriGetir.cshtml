@@ -1,0 +1,32 @@
+﻿@model MvcOnlineTicariOtomasyon.Models.Siniflar.Kategori
+@{
+    ViewBag.Title = "KategoriGetir";
+    Layout = "~/Views/Shared/AdminLayout.cshtml";
+}
+<br />
+<h2>Kategori Güncelleme</h2>
+<br />
+<h3>Input mode</h3>
+<form method="post" action="/Kategori/KategoriGuncelle">
+    <div class="form-group">
+        <label>Kategori Adı</label>
+        <input type="text" class="form-control" name="KategoriAd" value="@Model.KategoriAd" />
+        <input type="hidden" name="KategoriId" value="@Model.KategoriId" />
+    </div>
+    <button type="submit" class="btn btn-success">Güncelle</button>
+    <a href="/Kategori/Index" class="btn btn-primary">Ana Menüye Dön</a>
+</form>
+<br />
+<h3>Murat Hoca HtmlHelper Mode</h3>
+@using (Html.BeginForm("KategoriGuncelle", "Kategori", FormMethod.Post))
+{
+    <div class="form-group">
+        @Html.LabelFor(x => x.KategoriAd)
+        @Html.TextAreaFor(x => x.KategoriAd, new { @class = "form-control"})
+        @Html.HiddenFor(x => x.KategoriId)
+    </div>
+    <button type="submit" class="btn btn-success">Güncelle</button>
+    <!-- Ana Menüye Dön button u eklensin -->
+    <a href="/Kategori/Index" class="btn btn-primary">Ana Menüye Dön</a>
+}
+

@@ -1,0 +1,103 @@
+﻿@using MvcOnlineTicariOtomasyon.Models.Siniflar;
+@model List<SatisHareket>
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/AdminLayout.cshtml";
+}
+<br />
+<h2>Satış Hareketleri</h2>
+<br />
+<table id="tbl1" class="table table-bordered">
+    <thead>
+        <tr>
+            <th>
+                Satış ID
+            </th>
+            <th>
+                Cari Id
+            </th>
+            <th>
+                Cari Adı
+            </th>
+            <th>
+                Satış Personel Id
+            </th>
+            <th>
+                Satış Personel Adı
+            </th>
+            <th>
+                Ürün ID
+            </th>
+            <th>
+                Ürün Adı
+            </th>
+            <th>
+                Satış Adedi
+            </th>
+            <th>
+                Satış Toplam Tutarı
+            </th>
+            <th>
+                Satış Tarihi
+            </th>
+            <th>
+                İşlemler
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @item.SatisId
+                </td>
+                <td>
+                    @item.Cari.CariId
+                </td>
+                <td>
+                    @item.Cari.CariAd  @item.Cari.CariSoyad
+                </td>
+                <td>
+                    @item.Personel.PersonelId
+                </td>
+                <td>
+                    @item.Personel.PersonelAd @item.Personel.PersonelSoyad
+                </td>
+                <td>
+                    @item.Urun.UrunId
+                </td>
+                <td>
+                    @item.Urun.UrunAd
+                </td>
+                <td>
+                    @item.SatisAdet
+                </td>
+                <td>
+                    @item.SatisToplamTutar
+                </td>
+                <td>
+                    @item.SatisTarih
+                </td>
+                <td>
+                    <a href="/Satis/SatisGetir/@item.SatisId" class="btn btn-outline-info">Güncelle</a>
+                    <a href="/Satis/SatisDetay/@item.SatisId" class="btn btn-outline-primary">Detay</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+<a href="/Satis/YeniSatis" class="btn btn-info">Yeni Satış Yap</a>
+
+<link href="~/Content/bootstrap.css" rel="stylesheet" />
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+
+<link href="https://cdn.datatables.net/1.10.15/css/dataTables.bootstrap.min.css" rel="stylesheet" />
+<link href="https://cdn.datatables.net/responsive/2.1.1/css/responsive.bootstrap.min.css" rel="stylesheet" />
+<script src="https://cdn.datatables.net/1.10.15/js/jquery.dataTables.min.js"></script>
+<script src="https://cdn.datatables.net/1.10.15/js/dataTables.bootstrap4.min.js "></script>
+
+<script>
+    $('#tbl1').dataTable({});
+</script>

@@ -1,0 +1,71 @@
+﻿@using MvcOnlineTicariOtomasyon.Models.Siniflar;
+@model List<Cariler>
+<br />
+<h2>Cari Pasif Listesi</h2>
+<br />
+<div>
+    <a href="@Url.Action("Index")" class="btn btn-primary">Aktif Cari Listesi</a>
+</div>
+<br />
+<table class="table table-bordered">
+    <thead>
+        <tr>
+            <th>
+                Cari Ad
+            </th>
+            <th>
+                Cari Soyadı
+            </th>
+            <th>
+                Cari Sehir
+            </th>
+            <th>
+                Cari Mail
+            </th>
+            <th>
+                Cari Telefon
+            </th>
+            <th>
+                Cari Durum
+            </th>
+            <th>
+                İşlemler
+            </th>
+        </tr>
+    </thead>
+    <tbody id="cariList">
+        @foreach (var item in Model)
+        {
+            <tr class="cari-item @(item.CariDurum == false ? "inactive" : "active")">
+                <td>
+                    @Html.DisplayFor(modelItem => item.CariAd)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.CariSoyad)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.CariSehir)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.CariMail)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.CariTelefon)
+                </td>
+                <td>
+                    @if (item.CariDurum)
+                    {
+                        <span style="color: green;">Aktif</span>
+                    }
+                    else
+                    {
+                        <span style="color: red;">Pasif</span>
+                    }
+                </td>
+                <td>
+                    <a href="@Url.Action("CariAktifEt", "Cari", new { id = item.CariId })" class="btn btn-success">Aktif Et</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

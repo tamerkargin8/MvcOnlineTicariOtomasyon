@@ -1,0 +1,63 @@
+﻿
+@{
+    ViewBag.Title = "CariSatisGecmisi";
+    Layout = "~/Views/Shared/AdminLayout.cshtml";
+}
+<br />
+<ol class="breadcrumb mb-4">
+    <li class="breadcrumb-item active">Cari Adı: @ViewBag.cari</li>
+</ol>
+<br />
+<table class="table table-bordered">
+    <thead>
+        <tr>
+            <th>
+                Satis ID
+            </th>
+            <th>
+                Urun Ad
+            </th>
+            <th>
+                Adet
+            </th>
+            <th>
+                Fiyat
+            </th>
+            <th>
+                Satış Toplam
+            </th>
+            <th>
+                Tarih
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @item.SatisId
+                </td>
+                <td>
+                    @item.Urun.UrunAd
+                </td>
+                <td>
+                    @item.SatisAdet
+                </td>
+                <td>
+                    @item.SatisFiyat
+                </td>
+                <td>
+                    @item.SatisToplamTutar
+                </td>
+                <td>
+                    @item.SatisTarih
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+<div>
+    <a href="@Url.Action("Index")" class="btn btn-primary">Cari Listesi</a>
+</div>
+

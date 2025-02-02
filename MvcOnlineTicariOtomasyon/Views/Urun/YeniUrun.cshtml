@@ -1,0 +1,66 @@
+﻿@model MvcOnlineTicariOtomasyon.Models.Siniflar.Urun
+@{
+
+    ViewBag.Title = "Yeni Ürün Ekleme";
+    Layout = "~/Views/Shared/AdminLayout.cshtml";
+}
+
+<br />
+<h2>Yeni Ürün Ekleme</h2>
+<br />
+@using (Html.BeginForm("YeniUrun", "Urun", FormMethod.Post, new { enctype = "multipart/form-data" }))
+{
+    @Html.AntiForgeryToken()
+    <div class="form-group">
+        @Html.LabelFor(x => x.UrunAd)
+        @Html.TextBoxFor(x => x.UrunAd, new { @class = "form-control" })
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(x => x.UrunMarka)
+        @Html.TextBoxFor(x => x.UrunMarka, new { @class = "form-control" })
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(x => x.UrunStok)
+        @Html.TextBoxFor(x => x.UrunStok, new { @class = "form-control" })
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(x => x.UrunAlisFiyat)
+        @Html.TextBoxFor(x => x.UrunAlisFiyat, new { @class = "form-control" })
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(x => x.UrunSatisFiyat)
+        @Html.TextBoxFor(x => x.UrunSatisFiyat, new { @class = "form-control" })
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(x => x.UrunDurum)
+        <div>
+            <label>
+                @Html.RadioButtonFor(x => x.UrunDurum, true) Stok Var
+            </label>
+            <label>
+                @Html.RadioButtonFor(x => x.UrunDurum, false) Stok Yok
+            </label>
+        </div>
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(x => x.Kategori.KategoriAd)
+        @if (ViewBag.Kategoriler != null)
+        {
+            @Html.DropDownListFor(x => x.KategoriId,
+                new SelectList(ViewBag.Kategoriler, "Value", "Text"),
+                "Lütfen bir kategori seçin",
+                new { @class = "form-control" })
+        }
+        else
+        {
+            <p>Kategori listesi yüklenemedi.</p>
+        }
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(x => x.UrunGorsel)
+        @Html.TextBoxFor(x => x.UrunGorsel, new { @class = "form-control", type = "file" })
+    </div>
+
+
+    <button type="submit" class="btn btn-primary">Ekle</button>
+}

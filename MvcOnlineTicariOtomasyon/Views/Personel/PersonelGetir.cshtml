@@ -1,0 +1,54 @@
+﻿@model MvcOnlineTicariOtomasyon.Models.Siniflar.Personel
+@{
+    ViewBag.Title = "PersonelGetir";
+    Layout = "~/Views/Shared/AdminLayout.cshtml";
+}
+<br />
+<h2>PersonelGetir</h2>
+<br />
+@using (Html.BeginForm("PersonelGuncelle", "Personel", FormMethod.Post, new { enctype = "multipart/form-data" }))
+{
+    <div class=" form-group">
+        <label>Personel Ad</label>
+        @Html.TextBoxFor(x => x.PersonelAd, new { @class = "form-control" })
+    </div>
+    <div class=" form-group">
+        <label>Personel Soyad</label>
+        @Html.TextBoxFor(x => x.PersonelSoyad, new { @class = "form-control" })
+    </div>
+    <div class=" form-group">
+        <label>Personel Adres</label>
+        @Html.TextBoxFor(x => x.PersonelAdres, new { @class = "form-control" })
+    </div>
+    <div class=" form-group">
+        <label>Personel Mail</label>
+        @Html.TextBoxFor(x => x.PersonelMail, new { @class = "form-control" })
+    </div>
+    <div class=" form-group">
+        <label>Personel Telefon</label>
+        @Html.TextBoxFor(x => x.PersonelTelefon, new { @class = "form-control" })
+    </div>
+    <div class=" form-group">
+        <label>Personel Departman</label>
+        @if (ViewBag.departmanlar != null)
+        {
+            @Html.DropDownListFor(x => x.DepartmanId,
+                new SelectList(ViewBag.departmanlar, "Value", "Text"),
+                "Lütfen bir Departman seçin",
+                new { @class = "form-control" })
+        }
+        else
+        {
+            <p>Departman listesi yüklenemedi.</p>
+        }
+    </div>
+    <input type="hidden" name="PersonelId" value="@Model.PersonelId" />
+    <div class=" form-group">
+        <label>Personel Durum</label>
+        @Html.DropDownListFor(x => x.PersonelDurum,
+            new SelectList(new[] { new { Value = "true", Text = "Çalışıyor" }, new { Value = "false", Text = "Çalışmıyor" } }, "Value", "Text"),
+            new { @class = "form-control" })
+    </div>
+    <button type="submit" class="btn btn-primary">Güncelle</button>
+}
+

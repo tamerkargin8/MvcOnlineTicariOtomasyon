@@ -1,0 +1,147 @@
+﻿@using MvcOnlineTicariOtomasyon.Models.Siniflar
+@model List<SatisHareket>
+
+@{
+    ViewBag.Title = "SatisDetay";
+    Layout = "~/Views/Shared/AdminLayout.cshtml";
+}
+<br />
+<h2>Satis Detay</h2>
+<br />
+
+<table class="table table-bordered">
+    <thead>
+        <tr>
+            <th>
+                Satış ID
+            </th>
+            <th>
+                Cari Id
+            </th>
+            <th>
+                Cari Adı
+            </th>
+            <th>
+                Cari Soyadı
+            </th>
+            <th>
+                Personel Id
+            </th>
+            <th>
+                Personel Adı
+            </th>
+            <th>
+                Ürün Adı
+            </th>
+            <th>
+                Satış Adedi
+            </th>
+            <th>
+                Satış Fiyatı
+            </th>
+            <th>
+                Toplam Tutar
+            </th>
+            <th>
+                Tarih
+            </th>
+            <th>
+                Yazdır
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @item.SatisId
+                </td>
+                <td>
+                    @item.Cari.CariId
+                </td>
+                <td>
+                    @item.Cari.CariAd
+                </td>
+                <td>
+                    @item.Cari.CariSoyad
+                </td>
+                <td>
+                    @item.Personel.PersonelId
+                </td>
+                <td>
+                    @item.Personel.PersonelAd  @item.Personel.PersonelSoyad
+                </td>
+                <td>
+                    @item.Urun.UrunAd
+                </td>
+                <td>
+                    @item.SatisAdet
+                </td>
+                <td>
+                    @item.SatisFiyat
+                </td>
+                <td>
+                    @item.SatisToplamTutar
+                </td>
+                <td>
+                    @item.SatisTarih
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+<a href="#" class="btn btn-check" style="background-color: dodgerblue" onclick="printDiv('printableArea')">
+    <i class="fas fa-print"></i> Yazdır
+</a>
+
+<div id="printableArea" style="display: none;">
+    <h2>Satis Detay</h2>
+    <table class="table table-bordered">
+        <thead>
+            <tr>
+                <th>Satış ID</th>
+                <th>Cari Id</th>
+                <th>Cari Adı</th>
+                <th>Cari Soyadı</th>
+                <th>Personel Id</th>
+                <th>Personel Adı</th>
+                <th>Ürün Adı</th>
+                <th>Satış Adedi</th>
+                <th>Satış Fiyatı</th>
+                <th>Toplam Tutar</th>
+                <th>Tarih</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>@item.SatisId</td>
+                    <td>@item.Cari.CariId</td>
+                    <td>@item.Cari.CariAd</td>
+                    <td>@item.Cari.CariSoyad</td>
+                    <td>@item.Personel.PersonelId</td>
+                    <td>@item.Personel.PersonelAd @item.Personel.PersonelSoyad</td>
+                    <td>@item.Urun.UrunAd</td>
+                    <td>@item.SatisAdet</td>
+                    <td>@item.SatisFiyat</td>
+                    <td>@item.SatisToplamTutar</td>
+                    <td>@item.SatisTarih</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>
+
+<script>
+    function printDiv(divId) {
+        var printContents = document.getElementById(divId).innerHTML;
+        var originalContents = document.body.innerHTML;
+
+        document.body.innerHTML = printContents;
+        window.print();
+        document.body.innerHTML = originalContents;
+        location.reload(); // Reload to reset the page
+    }
+</script>

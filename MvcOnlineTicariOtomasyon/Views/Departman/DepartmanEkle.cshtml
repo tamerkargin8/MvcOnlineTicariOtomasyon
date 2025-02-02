@@ -1,0 +1,39 @@
+﻿@model MvcOnlineTicariOtomasyon.Models.Siniflar.Departman
+@{
+    ViewBag.Title = "DepartmanEkle";
+    Layout = "~/Views/Shared/AdminLayout.cshtml";
+}
+<br />
+<h2>Departman Ekle</h2>
+<br />
+<form method="post" action="/Departman/DepartmanEkle">
+    <div class="form-group">
+        <label>Departman Adı</label>
+        <input type="text" class="form-control" name="DepartmanAd" />
+    </div>
+    <div>
+        <label>Departman Durumu</label>
+        <select class="form-control" name="DepartmanDurum">
+            <option value="True">Aktif</option>
+            <option value="False">Pasif</option>
+        </select>
+    </div>
+    <button type="submit" class="btn btn-primary">Ekle</button>
+</form>
+<br />
+<h3>Murat Hocanın Html Helper ile Yaptığı</h3>
+<form class="form-group" method="post">
+    @Html.LabelFor(x => x.DepartmanAd)
+    @Html.TextAreaFor(x => x.DepartmanAd, new { @class = "form-control", @placeholder = "Departman Adı" })
+    <br />
+    @Html.LabelFor(x => x.DepartmanDurum)
+    @Html.DropDownListFor(x => x.DepartmanDurum, new List<SelectListItem>
+    {
+        new SelectListItem{Text="Aktif", Value="True"},
+        new SelectListItem{Text="Pasif", Value="False"}
+    }, new { @class = "form-control" })
+    <br />
+    <button type="submit" class="btn btn-primary">Ekle</button>
+</form>
+
+

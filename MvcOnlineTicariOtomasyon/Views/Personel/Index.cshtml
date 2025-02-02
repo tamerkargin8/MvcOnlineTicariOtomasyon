@@ -1,0 +1,65 @@
+﻿@using MvcOnlineTicariOtomasyon.Models.Siniflar;
+@model List<Personel>
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/AdminLayout.cshtml";
+}
+<br />
+<h2>Personel Listesi</h2>
+<br />
+<div class="form-group">
+    <input type="text" class="form-control" id="search" placeholder="Arama Yap" onkeyup="filterTable()">
+</div>
+<script>
+    function filterTable() {
+        var input = document.getElementById('search');
+        var filter = input.value.toLowerCase();
+        var rows = document.querySelectorAll('table tbody tr');
+        rows.forEach(function (row) {
+            var cells = row.getElementsByTagName('td');
+            var match = false;
+            for (var i = 0; i < cells.length; i++) {
+                if (cells[i].textContent.toLowerCase().includes(filter)) {
+                    match = true;
+                    break;
+                }
+            }
+            row.style.display = match ? '' : 'none';
+        });
+    }
+</script>
+
+<table class="table table-bordered">
+    <thead>
+        <tr>
+            <th>Personel Ad</th>
+            <th>Personel Soyad</th>
+            <th>Personel Departman</th>
+            <th>Personel Mail</th>
+            <th>Personel Telefon</th>
+            <th>Personel Durum</th>
+            <th>İşlemler</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>@item.PersonelAd</td>
+                <td>@item.PersonelSoyad</td>
+                <td>@item.Departman.DepartmanAd</td>
+                <td>@item.PersonelMail</td>
+                <td>@item.PersonelTelefon</td>
+                <td style="color: @(item.PersonelDurum ? "green" : "red")">@((item.PersonelDurum ? "Çalışıyor" : "Çalışmıyor"))</td>
+                <td>
+                    <a href="/Personel/PersonelSil/@item.PersonelId" class="btn btn-danger">Sil</a>
+                    <a href="/Personel/PersonelGetir/@item.PersonelId" class="btn btn-info">Güncelle</a>
+                    <a href="/Personel/PersonelSatisDetay/@item.PersonelId" class="btn btn-secondary">Personel Detay</a>
+            </tr>
+        }
+    </tbody>
+</table>
+<a href="/Personel/PersonelEkle/" class="btn btn-outline-primary"> Yeni Personel Ekle</a>
+
+
+

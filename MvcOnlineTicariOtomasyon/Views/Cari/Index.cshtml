@@ -1,0 +1,140 @@
+﻿@using MvcOnlineTicariOtomasyon.Models.Siniflar;
+@model List<Cariler>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/AdminLayout.cshtml";
+}
+<br />
+<h2>Cariler</h2>
+<br />
+
+<div class="form-group">
+    <input type="text" class="form-control" id="search" placeholder="Arama Yap" onkeyup="filterTable()">
+</div>
+
+<script>
+function filterTable() {
+    var input = document.getElementById('search');
+    var filter = input.value.toLowerCase();
+    var rows = document.querySelectorAll('#cariList tr');
+
+    rows.forEach(function(row) {
+        var cariAd = row.cells[0].textContent.toLowerCase();
+        var cariSoyad = row.cells[1].textContent.toLowerCase();
+        var cariMail = row.cells[3].textContent.toLowerCase();
+        var cariTelefon = row.cells[4].textContent.toLowerCase();
+        
+        if (cariAd.includes(filter) || cariSoyad.includes(filter) || cariMail.includes(filter) || cariTelefon.includes(filter)) {
+            row.style.display = '';
+        } else {
+            row.style.display = 'none';
+        }
+    });
+}
+</script>
+    <div>
+        <a href="@Url.Action("CariPasifGetir")" class="btn btn-warning">Pasif Cari Listesi</a>
+    </div>
+    <br />
+    <table class="table table-bordered">
+        <thead>
+            <tr>
+                <th>
+                    Cari Id
+                </th>
+                <th>
+                    Cari Ad
+                </th>
+                <th>
+                    Cari Soyadı
+                </th>
+                <th>
+                    Cari Sehir
+                </th>
+                <th>
+                    Cari Mail
+                </th>
+                <th>
+                    Cari Telefon
+                </th>
+                <th>
+                    Cari Durum
+                </th>
+                <th>
+                    İşlemler
+                </th>
+            </tr>
+        </thead>
+        <tbody id="cariList">
+            @foreach (var item in Model)
+            {
+                <tr class="cari-item @(item.CariDurum ? "active" : "inactive")">
+                    <td>
+                        @Html.DisplayFor(modelItem => item.CariId)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.CariAd)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.CariSoyad)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.CariSehir)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.CariMail)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.CariTelefon)
+                    </td>
+                    <td>
+                        @if (item.CariDurum)
+                        {
+                            <span style="color: green;">Aktif</span>
+                        }
+                        else
+                        {
+                            <span style="color: red;">Pasif</span>
+                        }
+                    </td>
+
+                    <td>
+                        <a href="/Cari/CariSil/@item.CariId" class="btn btn-danger">Sil</a>
+                        <a href="/Cari/CariGetir/@item.CariId" class="btn btn-info">Güncelle</a>
+                        <a href="/Cari/CariSatisGecmisi/@item.CariId" class="btn btn-gradient" style="background: linear-gradient(to right, #ff7e5f, #feb47b); color: white;">Satış Geçmişi</a>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+    <a href="/Cari/YeniCari" class="btn btn-outline-info">Yeni Cari Ekle</a>
+
+    <style>
+        .btn-gradient {
+            border: dashed 1px #ff7e5f;
+            border-radius: 5px;
+            padding: 5px 40px;
+            cursor: pointer;
+            transition: background 0.3s;
+        }
+
+            .btn-gradient:hover {
+                opacity: 1;
+            }
+
+        .inactive {
+            display: none;
+        }
+    </style>
+
+    <script>
+    document.getElementById('showInactive').addEventListener('change', function () {
+            var showInactive = this.checked;
+            var rows = document.querySelectorAll('.cari-item');
+            rows.forEach(function (row) {
+                if (row.classList.contains('inactive')) {
+                    row.style.display = showInactive ? '' : 'none';
+                }
+            });
+        });</script>

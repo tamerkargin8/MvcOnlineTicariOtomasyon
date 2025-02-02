@@ -24,6 +24,8 @@ namespace MvcOnlineTicariOtomasyon.Models.Siniflar
         [Column(TypeName = "Varchar")]
         [StringLength(250)]
         public string UrunGorsel { get; set; }
+
+        public int KategoriId { get; set; } //Bir ürünün bir kategorisi olabilir.
         public virtual Kategori Kategori { get; set; } //Bir ürünün bir kategorisi olabilir.
         public ICollection<SatisHareket> SatisHarekets { get; set; } //Bir ürünün birden fazla satış hareketi olabilir.
     }

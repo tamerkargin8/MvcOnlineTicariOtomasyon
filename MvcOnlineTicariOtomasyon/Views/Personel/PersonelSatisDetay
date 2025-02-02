@@ -1,0 +1,65 @@
+﻿
+@{
+    ViewBag.Title = "PersonelSatisDetay";
+    Layout = "~/Views/Shared/AdminLayout.cshtml";
+}
+<br />
+<h2>Personel Satis Detay</h2>
+<br />
+<ol class="breadcrumb mb-4">
+    <li class="breadcrumb-item active">Personel Adı: @ViewBag.dgr2</li>
+</ol>
+<br />
+<table class="table table-bordered">
+    <thead>
+        <tr>
+            <th>
+                Satis ID
+            </th>
+            <th>
+                Urun Ad
+            </th>
+            <th>
+                Adet
+            </th>
+            <th>
+                Fiyat
+            </th>
+            <th>
+                Satış Toplam
+            </th>
+            <th>
+                Tarih
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @item.SatisId
+                </td>
+                <td>
+                    @item.Urun.UrunAd
+                </td>
+                <td>
+                    @item.SatisAdet
+                </td>
+                <td>
+                    @item.SatisFiyat
+                </td>
+                <td>
+                    @item.SatisToplamTutar
+                </td>
+                <td>
+                    @item.SatisTarih
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+<div>
+    <a href="/Personel/Index" class="btn btn-primary">Personel Listesi</a>
+</div>
+

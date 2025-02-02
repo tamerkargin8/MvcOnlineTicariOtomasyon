@@ -1,0 +1,54 @@
+﻿@{
+    ViewBag.Title = "DepartmanPersonelSatis";
+    Layout = "~/Views/Shared/AdminLayout.cshtml";
+}
+<br />
+<h2>Departman Personel Satis</h2>
+<br />
+<ol class="breadcrumb mb-4">
+    <li class="breadcrumb-item active">Personel Adı: @ViewBag.p</li>
+</ol>
+<table class="table table-hover">
+    <tr>
+        <th>Satış Id</th>
+        <th>Satış Adeti</th>
+        <th>Satış Fiyatı</th>
+        <th>Toplam Satış Tutarı</th>
+        <th>Cari Adı</th>
+        <th>Personel</th>
+        <th>Ürün Adı</th>
+        <th>Tarih</th>
+        <th>Yazdır</th>
+    </tr>
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>@item.SatisId</td>
+            <td>@item.SatisAdet</td>
+            <td>@item.SatisFiyat</td>
+            <td>@item.SatisToplamTutar</td>
+            <td>@item.Cari.CariAd</td>
+            <td> @item.Personel.PersonelAd @item.Personel.PersonelSoyad </td>
+            <td>@item.Urun.UrunAd</td>
+            <td>@item.SatisTarih</td>
+            <td>
+                <a href="#" class="btn btn-check" style="background-color: dodgerblue">
+                    <i class="fas fa-print"></i> Yazdır
+                </a>
+            </td>
+        </tr>
+    }
+</table>
+<style>
+    .btn-gradient {
+        border: dashed 1px #ff7e5f;
+        border-radius: 5px;
+        padding: 5px 40px;
+        cursor: pointer;
+        transition: background 0.3s;
+    }
+
+        .btn-gradient:hover {
+            opacity: 1;
+        }
+</style>

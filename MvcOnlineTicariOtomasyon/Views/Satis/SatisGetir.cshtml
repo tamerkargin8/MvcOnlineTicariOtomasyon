@@ -1,0 +1,44 @@
+﻿@model MvcOnlineTicariOtomasyon.Models.Siniflar.SatisHareket
+@{
+    ViewBag.Title = "SatisGetir";
+    Layout = "~/Views/Shared/AdminLayout.cshtml";
+}
+
+<br />
+<h2>Satış Güncelleme </h2>
+<br />
+@using (Html.BeginForm("SatisGuncelle", "Satis", FormMethod.Post))
+{
+    @Html.AntiForgeryToken()
+    <div class="form-group">
+        @Html.HiddenFor(x => x.SatisId)
+        @Html.LabelFor(x => x.Cari.CariAd)
+        @Html.DropDownListFor(x => x.CariId, new SelectList(ViewBag.CariList, "Id", "Name"), "Cari Seçiniz", new { @class = "form-control" })
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(x => x.Personel.PersonelAd)
+        @Html.DropDownListFor(x => x.PersonelId, new SelectList(ViewBag.PersonelList, "Id", "Name"), "Personel Seçiniz", new { @class = "form-control" })
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(x => x.Urun.UrunAd)
+        @Html.DropDownListFor(x => x.UrunId, new SelectList(ViewBag.UrunList, "Id", "Name"), "Urun Seçiniz", new { @class = "form-control" })
+    </div>
+    <div class=" form-group">
+        @Html.LabelFor(x => x.SatisAdet)
+        @Html.TextBoxFor(x => x.SatisAdet, new { @class = "form-control" })
+    </div>
+    <div class=" form-group">
+        @Html.LabelFor(x => x.SatisFiyat)
+        @Html.TextBoxFor(x => x.SatisFiyat, new { @class = "form-control" })
+    </div>
+    <div class=" form-group">
+        @Html.LabelFor(x => x.SatisToplamTutar)
+        @Html.TextBoxFor(x => x.SatisToplamTutar, new { @class = "form-control" })
+    </div>
+    <div class="form-group">
+        <label>Tarih</label>
+        <input type="date" class="form-control" name="SatisTarih" value="@Model.SatisTarih.ToString("yyyy-MM-dd")" />
+    </div>
+    <input type="hidden" name="SatisId" value="@Model.SatisId" />
+    <button type="submit" class="btn btn-primary">Güncelle</button>
+}

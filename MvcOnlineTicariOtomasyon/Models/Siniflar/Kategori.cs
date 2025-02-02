@@ -14,7 +14,7 @@ namespace MvcOnlineTicariOtomasyon.Models.Siniflar
         [Column(TypeName = "Varchar")]
         [StringLength(30)]
         public string KategoriAd { get; set; }
-        public ICollection<Urun> Uruns { get; set; } //Birden fazla ürün tutması için ICollection tanımladık.
+        public virtual ICollection<Urun> Uruns { get; set; } //Birden fazla ürün tutması için ICollection tanımladık.
 
 
     }

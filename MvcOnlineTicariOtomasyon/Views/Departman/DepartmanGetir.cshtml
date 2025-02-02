@@ -1,0 +1,27 @@
+﻿@model MvcOnlineTicariOtomasyon.Models.Siniflar.Departman
+@{
+    ViewBag.Title = "DepartmanGetir";
+    Layout = "~/Views/Shared/AdminLayout.cshtml";
+}
+
+<br />
+<h2>Departman Güncelle</h2>
+<br />
+<form method="post" action="/Departman/DepartmanGuncelle">
+    <div class="form-group">
+        <label>Departman Adı</label>
+        <input type="text" class="form-control" name="DepartmanAd" value="@Model.DepartmanAd" />
+
+    </div>
+    <div>
+        <label>Departman Durumu</label>
+        <select class="form-control" name="DepartmanDurum">
+            <option value="True" @(Model.DepartmanDurum == true ? "selected" : "")>Aktif</option>
+            <option value="False" @(Model.DepartmanDurum == false ? "selected" : "")>Pasif</option>
+        </select>
+    </div>
+    <input type="hidden" name="DepartmanId" value="@Model.DepartmanId" />
+    <br />
+    <button type="submit" class="btn btn-primary">Güncelle</button>
+</form>
+
