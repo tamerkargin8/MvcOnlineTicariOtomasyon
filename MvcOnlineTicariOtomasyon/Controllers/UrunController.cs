@@ -55,6 +55,7 @@ namespace MvcOnlineTicariOtomasyon.Controllers
             u.UrunAlisFiyat = urun.UrunAlisFiyat;
             u.UrunSatisFiyat = urun.UrunSatisFiyat;
             u.UrunStok = urun.UrunStok;
+            u.UrunAciklama = urun.UrunAciklama;
             u.UrunDurum = urun.UrunDurum;
             u.UrunGorsel = urun.UrunGorsel;
             u.KategoriId = urun.KategoriId;

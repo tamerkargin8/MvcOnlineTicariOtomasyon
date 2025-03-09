@@ -17,6 +17,7 @@ namespace MvcOnlineTicariOtomasyon.Models.Siniflar
         public int FaturaMiktar { get; set; }
         public decimal FaturaBirimFiyat { get; set; }
         public decimal FaturaTutar { get; set; }
+        public int FaturaId { get; set; }
         public virtual Faturalar Faturalar { get; set; } // Faturalar sınıfı ile ilişkilendirme - FaturaKalem sınıfı ile Faturalar sınıfı arasında 1'e çok ilişki kuruldu.
 
     }

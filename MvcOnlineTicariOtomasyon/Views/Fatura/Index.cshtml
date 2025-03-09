@@ -7,7 +7,7 @@
 <br />
 <h2>Faturalar</h2>
 <br />
-<table class="table table-bordered">
+<table id="tbl1" class="table table-bordered">
     <thead>
         <tr>
             <th>
@@ -75,6 +75,7 @@
                 </td>
                 <td>
                     <a href="/Fatura/FaturaDetay/@item.FaturaId" class="btn btn-primary">Detay</a>
+                    <a href="/Fatura/FaturaGetir/@item.FaturaId" class="btn btn-warning">Güncelle</a>
                 </td>
             </tr>
         }
@@ -83,3 +84,15 @@
 <br />
 <a href="/Fatura/YeniFaturaEkle" class="btn btn-primary">Yeni Fatura Ekle</a>
 
+<link href="~/Content/bootstrap.css" rel="stylesheet" />
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+
+<link href="https://cdn.datatables.net/1.10.15/css/dataTables.bootstrap.min.css" rel="stylesheet" />
+<link href="https://cdn.datatables.net/responsive/2.1.1/css/responsive.bootstrap.min.css" rel="stylesheet" />
+<script src="https://cdn.datatables.net/1.10.15/js/jquery.dataTables.min.js"></script>
+<script src="https://cdn.datatables.net/1.10.15/js/dataTables.bootstrap4.min.js "></script>
+
+<script>
+    $('#tbl1').dataTable({});
+</script>

@@ -1,0 +1,81 @@
+﻿@using MvcOnlineTicariOtomasyon.Models.Siniflar;
+@model List<Urun>
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/AdminLayout.cshtml";
+}
+<br />
+<h2>Galeri</h2>
+<br />
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link href="https://fonts.googleapis.com/css?family=Quicksand:300,400,500,700,900" rel="stylesheet">
+    <link rel="stylesheet" href="~/thumber/fonts/icomoon/style.css">
+    <link rel="stylesheet" href="~/thumber/css/bootstrap.min.css">
+    <link rel="stylesheet" href="~/thumber/css/magnific-popup.css">
+    <link rel="stylesheet" href="~/thumber/css/jquery-ui.css">
+    <link rel="stylesheet" href="~/thumber/css/owl.carousel.min.css">
+    <link rel="stylesheet" href="~/thumber/css/owl.theme.default.min.css">
+
+    <link rel="stylesheet" href="~/thumber/css/bootstrap-datepicker.css">
+
+    <link rel="stylesheet" href="~/thumber/fonts/flaticon/font/flaticon.css">
+
+    <link rel="stylesheet" href="~/thumber/css/aos.css">
+    <link rel="stylesheet" href="~/thumber/css/jquery.scrollbar.css">
+    <link rel="stylesheet" href="~/thumber/css/fancybox.min.css">
+    <link rel="stylesheet" href="~/thumber/css/swiper.min.css">
+
+    <link rel="stylesheet" href="~/thumber/css/style.css">
+</head>
+<body>
+    <br />
+    <div class="site-wrap">
+        <main class="main-content">
+            @foreach (var item in Model)
+            {
+                <div class="container">
+                    <div class="row">
+                        @foreach (var innerItem in Model) 
+                        {
+                            <div class="col-lg-4">
+                                <div class="owl-carousel slide-one-item">
+                                    <div>
+                                        <img src="@innerItem.UrunGorsel" width="100" height="100" alt="Image" class="img-fluid">
+                                    </div>
+                                </div>
+                                <h2 class="site-section-heading mb-3">@innerItem.UrunAd</h2>
+                                <p>@innerItem.UrunMarka</p>
+                                <p><strong class="text-primary h4">@innerItem.UrunSatisFiyat</strong></p>
+                            </div>
+                        }
+                    </div>
+                </div>
+            }
+            </main>
+        </div> <!-- .site-wrap -->
+        <script src="~/thumber/js/jquery-3.3.1.min.js"></script>
+        <script src="~/thumber/js/jquery-migrate-3.0.1.min.js"></script>
+        <script src="~/thumber/js/jquery-ui.js"></script>
+        <script src="~/thumber/js/popper.min.js"></script>
+        <script src="~/thumber/js/bootstrap.min.js"></script>
+        <script src="~/thumber/js/owl.carousel.min.js"></script>
+        <!-- <script src="~/thumber/js/jquery.stellar.min.js"></script> -->
+        <script src="~/thumber/js/jquery.countdown.min.js"></script>
+        <script src="~/thumber/js/jquery.magnific-popup.min.js"></script>
+        <script src="~/thumber/js/bootstrap-datepicker.min.js"></script>
+        <script src="~/thumber/js/aos.js"></script>
+
+        <script src="~/thumber/js/jquery.fancybox.min.js"></script>
+        <script src="~/thumber/js/swiper.min.js"></script>
+        <script src="~/thumber/js/jquery.scrollbar.js"></script>
+        <script src="~/thumber/js/main.js"></script>
+
+
+
+    </body>
+</html>
+

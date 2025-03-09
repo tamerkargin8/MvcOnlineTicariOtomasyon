@@ -1,0 +1,47 @@
+﻿@model MvcOnlineTicariOtomasyon.Models.Siniflar.Faturalar
+@{
+    ViewBag.Title = "FaturaGetir";
+    Layout = "~/Views/Shared/AdminLayout.cshtml";
+}
+
+<br />
+<h2>Fatura Güncelleme</h2>
+<br />
+@using (Html.BeginForm("FaturaGuncelle", "Fatura", FormMethod.Post))
+{
+    @Html.AntiForgeryToken()
+    <div class="form-group">
+        @Html.HiddenFor(x => x.FaturaId)
+        @Html.LabelFor(x => x.FaturaSeriNo)
+        @Html.TextBoxFor(x => x.FaturaSeriNo, new { @class = "form-control" })
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(x => x.FaturaSiraNo)
+        @Html.TextBoxFor(x => x.FaturaSiraNo, new { @class = "form-control" })
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(x => x.FaturaTarih)
+        @Html.TextBoxFor(x => x.FaturaTarih, new { @class = "form-control", @type = "date" })
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(x => x.FaturaSaat)
+        @Html.TextBoxFor(x => x.FaturaSaat, new { @class = "form-control", @type = "time" })
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(x => x.VergiDairesi)
+        @Html.TextBoxFor(x => x.VergiDairesi, new { @class = "form-control" })
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(x => x.FaturaToplamTutar)
+        @Html.TextBoxFor(x => x.FaturaToplamTutar, new { @class = "form-control" })
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(x => x.Cari.CariAd)
+        @Html.DropDownListFor(x => x.CariId, new SelectList(ViewBag.CariList, "Id", "Name"), "Select Cari", new { @class = "form-control" })
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(x => x.Personel.PersonelAd)
+        @Html.DropDownListFor(x => x.PersonelId, new SelectList(ViewBag.PersonelList, "Id", "Name"), "Select Personel", new { @class = "form-control" })
+    </div>
+    <button type="submit" class="btn btn-primary">Güncelle</button>
+}

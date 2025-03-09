@@ -27,6 +27,9 @@
                 Ürün Satış Fiyat
             </th>
             <th>
+                Ürün Açıklama
+            </th>
+            <th>
                 Ürün Durum
             </th>
             <th>
@@ -58,6 +61,9 @@
                 </td>
                 <td>
                     @item.UrunSatisFiyat
+                </td>
+                <td>
+                    @item.UrunAciklama
                 </td>
                 <td style="color: @(item.UrunStok > 0 ? "green" : "red")">
                     @(item.UrunStok > 0 ? "Stok Var" : "Stok Yok")
